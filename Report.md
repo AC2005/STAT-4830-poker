@@ -39,7 +39,7 @@ Self-play allows the model to refine its policy by continually encountering dive
 
 1. **Maximize Expected Value (EV)**  
    \[
-   \max \mathbb{E}[\text{Winnings per action}]
+   $\max \mathbb{E}[\text{Winnings per action}]$
    \]
    Focuses on **long-term gains**, rather than immediate outcomes.
 
