@@ -11,7 +11,7 @@
 ## Areas for Improvement (Max 3 bullet points)
 
 - **Increase the model’s accuracy** by refining both the architecture and training strategy  
-- **Deepen understanding of TinyZero and Ragen**, particularly how they differ from traditional LLMs in reasoning-based tasks  
+- **Deepen understanding of DeepSeek R1 Ragen**, particularly how they differ from traditional LLMs in reasoning-based tasks  
 - **Strengthen mathematical rigor** in formulating the problem, moving beyond intuitive descriptions to more formalized approaches
 
 ---
@@ -27,7 +27,7 @@ The **availability and quality of poker datasets**, especially those with annota
 ### Concrete Next Actions (Max 3 bullet points)
 
 1. **Shift testing to larger models** (e.g., GPT-3.5, GPT-4, Falcon, Mistral, LLaMA) to gauge accuracy and performance improvements over smaller models.  
-2. **Investigate alternative reasoning models** like TinyZero and Ragen to see if they offer stronger decision-making capabilities for structured environments such as poker.  
+2. **Investigate alternative reasoning models** like DeepSeek R1 and Ragen to see if they offer stronger decision-making capabilities for structured environments such as poker.  
 3. **Explore additional computational resources** to handle the increased memory and processing demands of larger models and specialized reasoning systems.
 
 ---
@@ -35,7 +35,7 @@ The **availability and quality of poker datasets**, especially those with annota
 ## ACT: Prepare for Execution
 
 - **Secure higher-capacity computing resources** to mitigate RAM limitations encountered in previous experiments.  
-- **Obtain or implement access to different model architectures** (e.g., TinyZero, Ragen) for comparative performance testing.
+- **Obtain or implement access to different model architectures** (e.g., DeepSeekR1, Ragen) for comparative performance testing.
 
 ---
 
