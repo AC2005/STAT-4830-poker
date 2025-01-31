@@ -38,13 +38,11 @@ Self-play allows the model to refine its policy by continually encountering dive
 ## **3. Mathematical Formulation**
 
 1. **Maximize Expected Value (EV)**  
-   $\max \mathbb{E}[\text{Winnings per action}]$
+   $$\max \mathbb{E}[\text{Winnings per action}]$$
    Focuses on **long-term gains**, rather than immediate outcomes.
 
-2. **Minimize Regret**  
-   \[
-   \min \sum_{t=1}^{T} \bigl(\text{Best Possible Outcome} - \text{Chosen Action Outcome}\bigr)
-   \]
+3. **Minimize Regret**  
+   $$\min \sum_{t=1}^{T} \bigl(\text{Best Possible Outcome} - \text{Chosen Action Outcome}\bigr)$$
    Ensures the strategy converges toward optimal play by evaluating performance gaps over time.
 
 ### **Constraints**
