@@ -38,9 +38,7 @@ Self-play allows the model to refine its policy by continually encountering dive
 ## **3. Mathematical Formulation**
 
 1. **Maximize Expected Value (EV)**  
-   \[
    $\max \mathbb{E}[\text{Winnings per action}]$
-   \]
    Focuses on **long-term gains**, rather than immediate outcomes.
 
 2. **Minimize Regret**  
