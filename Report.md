@@ -27,8 +27,8 @@ We seek to develop a **reasoning model** optimized for no-limit hold’em poker.
 
 ## **2. Technical Approach and Methodology**
 
-### **2.1 Deep Q-Learning + Action Abstraction**
-We employ a **Deep Q-Learning (DQL)** framework, approximating the **Q-function** \(Q(s,a)\) with a neural network. **Action abstraction** reduces continuous betting to discrete actions (fold, check, bet X, raise Y) for more tractable learning. 
+### **2.1 Fine-tuning LLM**
+We fine-tune a small distilled DeepSeek R1 model to take in a text description of the poker hands at the table, and output a decision ("raise", "check", "fold", etc.). 
 
 ### **2.2 Self-Play with PyPokerEngine**
 Self-play allows the model to refine its policy by continually encountering diverse scenarios. **PyPokerEngine** provides a controlled environment for simulated hands and backpropagation of rewards.
