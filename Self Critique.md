@@ -41,6 +41,6 @@ The **availability and quality of poker datasets**, especially those with annota
 
 ## Resource Needs (2–3 sentences)
 
-We require **access to high-capacity computing resources and sufficient GPU hours** to handle the memory needs of larger models like GPT-4 and Mistral. We also need to **gain familiarity with TinyZero and Ragen**, referencing the following repositories for guidance:  
-[https://github.com/Jiayi-Pan/TinyZero](https://github.com/Jiayi-Pan/TinyZero)  
+We require **access to high-capacity computing resources and sufficient GPU hours** to handle the memory needs of larger models like GPT-4 and Mistral. We also need to **gain familiarity with DeepSeekR1 and Ragen**, referencing the following repositories for guidance:  
+[https://github.com/deepseek-ai/DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1)
 [https://github.com/ZihanWang314/ragen](https://github.com/ZihanWang314/ragen)
