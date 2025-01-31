@@ -54,10 +54,7 @@ Self-play allows the model to refine its policy by continually encountering dive
 
 ## **4. Algorithm Choice & Justification**
 
-1. **Deep Q-Learning** – Effective for learning optimal actions in discrete states, especially in environments with delayed rewards.  
-2. **Action Abstraction** – Constrains the massive action space, maintaining feasible computation times.  
-3. **Self-Play** – Enables robust policy improvement without requiring large-scale real-world data.  
-4. **Reasoning Model vs. Traditional LLMs** – A specialized model focusing on decision-making is both more **transparent** and **efficient** for this task.
+**Reasoning Model** – A specialized model focusing on decision-making is both more **transparent** and **efficient** for this task. A reasoning model would be able to make the complex decisions required for poker, since players must anticipate other players' actions in poker. Models like traditional Game-Theory Optimal models take too much computational power for each handm, while reasoning models may be able to generalize better across the many possible hands in poker.
 
 ---
 
