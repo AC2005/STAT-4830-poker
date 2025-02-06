@@ -134,3 +134,5 @@ Our first experiments using **GPT-2** produced **0% accuracy**: the model rehash
 - **Game-Theory Optimal** approaches are **computationally expensive**, requiring careful abstraction.
 
 ---
+
+project playlist: https://open.spotify.com/playlist/4hIpmIOvxOfYcRQ1p4Ct6H?si=06e5e62d6fbb4c13
