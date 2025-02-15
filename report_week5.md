@@ -65,7 +65,7 @@ GRPO introduces a **reward propagation operator** to improve policy optimization
 
 ## Progress and Applications on Our Poker Model
 Our overarching goal is to develop or fine tune a **reasoning model for poker** using RL to predict optimal poker moves. Thus far:
-1. We tried to load in a distilled version of DeepSeek (1.5B Parameters) to finetune on our Poker Bench data, but Colab does not have enough GPU vRAM to support it. If we gain access to more compute, we plan on running that model and evaluating its performance
+1. We tried to load in a distilled version of DeepSeek (1.5B Parameters) to finetune on our Poker Bench data, but Colab does not have enough GPU vRAM to support it. We also tried to finetune Qwen2.5 (0.5B Parameters), but ran into a similar GPU vRAM issue. If we gain access to more compute, we plan on running that model and evaluating its performance
 our data. 
 We are currently working on:
 1. Using Unsloth to apply GRPO to Llama 3B to develop a reasoning model for our poker dataset. This includes creating desining custom reward functions that reward outputs of proper poker actions, and apply bigger rewards for correctly predicting the 
