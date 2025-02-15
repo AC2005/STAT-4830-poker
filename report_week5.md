@@ -14,6 +14,12 @@ An MDP is defined by:
 
 An agent learns by following a policy that maps states to actions, with the goal of maximizing cumulative reward.
 
+## TinyZero
+TinyZero is a streamlined reinforcement learning (RL) framework inspired by the success of AlphaZero, a groundbreaking algorithm developed by DeepMind. While AlphaZero demonstrated remarkable performance, its computational demands—requiring thousands of TPUs and GPUs—make it impractical for many real-world applications. TinyZero addresses this limitation by optimizing the AlphaZero architecture for smaller-scale problems, making it accessible for researchers and practitioners with limited computational resources.
+- TinyZero reduces the complexity of the neural network used in AlphaZero by employing smaller models with fewer layers and parameters.
+- TinyZero incorporates optimizations to the MCTS algorithm, such as reduced simulation depth and adaptive exploration strategies, to balance computational efficiency with decision-making accuracy.
+- TinyZero emphasizes on-policy learning, where the agent learns directly from its interactions with the environment, reducing the need for extensive self-play iterations and lowering computational costs. In comparison, AlphaZero relies on self-play to generate training data.
+
 ### veRL
 veRL, or Variational Explicit Reinforcement Learning, is a flexible, efficient and production-ready RL training library for large language models (LLMs). It trains AI by balancing exploration and exploitation. It uses probability to “guess” the best strategies and improve them over time. veRL is useful in the easy extension of diverse RL algorithms by allowing users to build RL dataflows with a few lines of code, seamless integration of existing LLM infra with modular APIs, flexible device mapping and parallelism, and readily integration with popular HuggingFace models. It is fast with state-of-the-art throughput and efficient actor model resharding with 3D-HybridEngine by eliminating memory redundancy and reduces communication overhead. veRL may be useful in poker optimization due to uncertainty handling, better generalization, and scalability since veRL uses probability-based reasoning. TinyZero is built upon veRL.
 
