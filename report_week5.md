@@ -33,6 +33,9 @@ To handle high-dimensional state spaces, **Deep Q Networks (DQN)** approximate t
 2. **Target Networks:** Uses a periodically updated Q-network to stabilize learning.
 3. **Loss Function:** The mean squared error (MSE) between Q-value estimates and target Q-values.
 
+### veRL
+veRL, or Variational Explicit Reinforcement Learning, is a flexible, efficient and production-ready RL training library for large language models (LLMs). It trains AI by balancing exploration and exploitation. It uses probability to “guess” the best strategies and improve them over time. veRL is useful in the easy extension of diverse RL algorithms by allowing users to build RL dataflows with a few lines of code, seamless integration of existing LLM infra with modular APIs, flexible device mapping and parallelism, and readily integration with popular HuggingFace models. It is fast with state-of-the-art throughput and efficient actor model resharding with 3D-HybridEngine by eliminating memory redundancy and reduces communication overhead. veRL may be useful in poker optimization due to uncertainty handling, better generalization, and scalability since veRL uses probability-based reasoning.
+
 ## Policy Optimization Methods
 ### Policy Gradient Methods
 Policy-based methods optimize a policy \($pi_\theta$\) directly by maximizing expected return:
