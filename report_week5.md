@@ -68,8 +68,7 @@ Our overarching goal is to develop or fine tune a **reasoning model for poker** 
 1. We tried to load in a distilled version of DeepSeek (1.5B Parameters) to finetune on our Poker Bench data, but Colab does not have enough GPU vRAM to support it. We also tried to finetune Qwen2.5 (0.5B Parameters), but ran into a similar GPU vRAM issue. If we gain access to more compute, we plan on running that model and evaluating its performance
 our data. 
 We are currently working on:
-1. Using Unsloth to apply GRPO to Llama 3B to develop a reasoning model for our poker dataset. This includes creating desining custom reward functions that reward outputs of proper poker actions, and apply bigger rewards for correctly predicting the 
-optimal output. 
+1. Using Unsloth to apply GRPO to Llama 3B to develop a reasoning model for our poker dataset. This includes creating desining custom reward functions that reward outputs of proper poker actions, and apply bigger rewards for correctly predicting the optimal output. Using Unsloth/Hugging Face GRPOTrainer along with the PokerBench dataset was an improvement, as we could successfully perform training in Colab, though it took a few hours. Our current objective is to improve the reward functions (which currently are more proof of concept functions that simply pattern match for certain terms/correct move outputs) to be more fine-tuned to poker reasoning and have more deliberate reward values.
 
 ## Conclusion
 Reinforcement Learning has evolved through Q-learning, deep Q-networks, and policy gradient methods such as PPO and GRPO. These advances provide robust frameworks for training intelligent agents in complex decision-making tasks. Our poker project will leverage these methods to develop a model capable of reasoning and making optimal poker decisions, contributing to AI-driven game strategies.
