@@ -20,13 +20,12 @@ In LLMs, the state corresponds to the current text sequence, and the action is t
 ## Q-Learning and Deep Q-Learning
 ### Q-Learning
 Q-learning is an off-policy algorithm that learns the **Q-value function**, which estimates the expected cumulative reward from taking action \(a\) in state \(s\) and following the optimal policy thereafter:
-\[
-Q(s,a) = E[R | s, a]
-\]
+
+$$Q(s,a) = E[R | s, a]$$
+
 Using the **Bellman equation**, Q-values are iteratively updated:
-\[
-Q(s,a) \leftarrow Q(s,a) + \alpha [r + \gamma \max_a Q(s',a) - Q(s,a)]
-\]
+
+$$Q(s,a) \leftarrow Q(s,a) + \alpha [r + \gamma \max_a Q(s',a) - Q(s,a)]$$
 
 ### Deep Q-Learning
 To handle high-dimensional state spaces, **Deep Q Networks (DQN)** approximate the Q-function using a neural network. DQN employs:
