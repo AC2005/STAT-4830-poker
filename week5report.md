@@ -10,7 +10,7 @@ An MDP is defined by:
 - **Actions (a):** Choices available to the agent in each state.
 - **Reward (r):** Feedback signal that evaluates the quality of an action.
 - **Transition Function (T):** Defines state transitions given an action.
-- **Policy (\(\pi\))**: A function dictating the agent’s action selection.
+- **Policy ($pi$)**: A function dictating the agent’s action selection.
 
 An agent learns by following a policy that maps states to actions, with the goal of maximizing cumulative reward.
 
@@ -35,18 +35,18 @@ To handle high-dimensional state spaces, **Deep Q Networks (DQN)** approximate t
 
 ## Policy Optimization Methods
 ### Policy Gradient Methods
-Policy-based methods optimize a policy \(\pi_\theta\) directly by maximizing expected return:
-\[
-J(\theta) = E_{\tau \sim \pi_\theta} [R(\tau)]
-\]
-where \(\tau\) is a trajectory. The gradient is estimated using the **policy gradient theorem** and updated via stochastic gradient ascent.
+Policy-based methods optimize a policy \($pi_\theta$\) directly by maximizing expected return:
+
+$$J(\theta) = E_{\tau \sim \pi_\theta} [R(\tau)]$$
+
+where ($tau$) is a trajectory. The gradient is estimated using the **policy gradient theorem** and updated via stochastic gradient ascent.
 
 ### Proximal Policy Optimization (PPO)
 PPO improves policy gradient methods by introducing a **clipped surrogate objective** to prevent large, destabilizing updates:
-\[
-L(\theta) = E\left[ \min(r_t(\theta) A_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) A_t) \right]
-\]
-where \( r_t(\theta) \) is the probability ratio between new and old policies, and \( A_t \) is the advantage function. PPO balances computational efficiency with stability by avoiding second-order derivatives used in Trust Region Policy Optimization (TRPO).
+
+$$L(\theta) = E\left[ \min(r_t(\theta) A_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) A_t) \right]$$
+
+where ($r_t(\theta)$) is the probability ratio between new and old policies, and \( $A_t$ \) is the advantage function. PPO balances computational efficiency with stability by avoiding second-order derivatives used in Trust Region Policy Optimization (TRPO).
 
 ### Guaranteed Reward Policy Optimization (GRPO)
 GRPO introduces a **reward propagation operator** to improve policy optimization:
