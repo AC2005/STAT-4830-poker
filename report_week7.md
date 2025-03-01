@@ -2,6 +2,40 @@
 
 ## Fine Tuning in Unsloth
 
+Unsloth is an open-source Python framework that speeds up the process of fine-tuning and accessing large language models (LLMs). It does so through the following methods:
+
+1. Optimized Computation Kernels
+
+Standard Approach: In typical fine-tuning frameworks, backpropagation and forward passes are handled by general-purpose libraries (like PyTorch) that are optimized for flexibility rather than maximum speed.
+Unsloth's Strategy: Unsloth rewrites key portions of the modeling code into specialized, highly optimized kernels using Triton. By manually deriving the backpropagation steps and implementing them in these low-level kernels, it cuts out much of the overhead that general-purpose implementations carry.
+Goal-Oriented Outcome: This results in faster computation during training, as the custom kernels are tailored specifically to the operations performed in language models.
+
+2. Memory Efficiency and Reduced Overhead
+
+Standard Approach: Many systems duplicate memory usage (for example, storing additional copies for gradient calculations or keeping separate caches for inference and training), which slows down processing and increases VRAM usage.
+Unsloth's Strategy: Unsloth smartly removes this duplication by sharing memory spaces between the inference engine (vLLM) and the training process. It also employs efficient gradient checkpointing—offloading intermediate activations to system RAM asynchronously. This not only slashes the required VRAM but also minimizes latency by reducing data transfers.
+Goal-Oriented Outcome: With a leaner memory footprint, the model can process larger batches or longer sequences without the overhead that slows down traditional approaches.
+
+3. Integrated Fast Inference
+
+Standard Approach: Typically, the training and inference pipelines are distinct, which can lead to inefficiencies when switching contexts or reloading models.
+Unsloth's Strategy: By integrating fast inference directly into the training pipeline (using tools like vLLM), Unsloth allows for simultaneous fine-tuning and efficient generation. This avoids the additional overhead of moving data between separate processes or systems.
+Goal-Oriented Outcome: The result is a smoother, faster training process where the benefits of optimizations carry through both training and inference stages.
+
+## GRPO
+
+GRPO (Group Relative Policy Optimization) was developed by DeepSeek. Instead of training a model solely on next-token prediction (which simply teaches it to mimic data), GRPO trains a model to optimize a reward function. This reward function is designed to capture qualities like correctness, logical reasoning, and even stylistic or structural attributes.
+
+Group-Based Comparison:
+The “group relative” aspect comes from how GRPO evaluates multiple responses at once. For each input, the model generates several candidate responses (for example, 8 variations). Rather than judging each answer in isolation, GRPO compares them within the group:
+
+Scoring: Each response is scored based on a reward function (or set of functions). For instance, in a simple arithmetic task, the reward function might add points for a correct answer and deduct points for errors.
+
+Relative Reinforcement: The model then reinforces responses that score above the group average. In effect, it’s not only learning what a “good” answer looks like in absolute terms, but what distinguishes a better answer from an average one.
+
+Why It Matters:
+This process helps the model learn not just the final answer, but the underlying chain-of-thought or reasoning process leading to that answer. By emphasizing the quality of the reasoning, GRPO pushes the model to “think” more deeply about its outputs.
+
 ## LoRA
 
 ## Introduction
