@@ -10,20 +10,14 @@ Large-scale fine-tuning of transformer models like GPT-3 (175B) is computational
 ## Methodology
 ### Low-Rank Decomposition
 Given a weight matrix $W_0 \in \mathbb{R}^{d \times k}$ in a Transformer layer, LoRA models its adaptation as:
-$
-W = W_0 + \Delta W, \quad \text{where } \Delta W = BA,
-$
+$W = W_0 + \Delta W, \quad \text{where } \Delta W = BA$,
 where $B \in \mathbb{R}^{d \times r}$ and $A \in \mathbb{R}^{r \times k}$ with rank $r \ll \min(d, k)$. The LoRA adaptation only updates $A$ and $B$ while keeping $W_0$ frozen, reducing the number of trainable parameters from $O(dk)$ to $O(r(d+k))$.
 
 ### Gradient Flow and Optimization
 During training, the forward pass is modified as:
-$
-h = W_0 x + BAx,
-$
+$h = W_0 x + BAx$,
 where $BAx$ represents the low-rank adaptation. The gradients are computed only for $A$ and $B$, reducing the optimization complexity. LoRA also introduces a scaling factor $\alpha/r$ to stabilize training:
-$
-\Delta W = \frac{\alpha}{r} BA.
-$
+$\Delta W = \frac{\alpha}{r} BA$.
 
 ## Notable Empirical Results
 LoRA achieves comparable or superior performance to full fine-tuning across various benchmarks:
