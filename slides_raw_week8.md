@@ -53,18 +53,26 @@ Several notable AI-driven poker models include:
 ---
 ## Technical Approach
 
-### Unsloth and GRPO
+### Unsloth
 
-Unsloth is an open-source Python framework that speeds up the process of fine-tuning and accessing large language models (LLMs). It does so through the following methods:
-Optimized Computation Kernels
-Memory Efficiency and Reduced Overhead
-Integrated Fast Inference
+Unsloth is an open-source Python framework that speeds up the process of fine-tuning and using LLMs.
+- Optimized PyTorch code
+- Handwriting GPU kernels to speed up inference
+- Better memory utilization via typecasting
+- Allows us to fine-tune 8B parameter models on just a Colab T4 GPU
 
-How We Use It: 
+---
 
-GRPO (Group Relative Policy Optimization), developed by DeepSeek, trains a model to optimize a reward function instead of training a model solely on next-token prediction (which simply teaches it to mimic data). Through group-based comparison, scoring, and relative reinforcement, this process helps the model learn the underlying reasoning process and not just the final answer. 
+### GRPO
 
-How We Use It: 
+GRPO (Group Relative Policy Optimization) is a reinforcement learning algorithm developed by DeepSeek.
+
+- Trains a model to optimize a reward function instead of training a model solely on next-token prediction (which simply teaches it to mimic data)
+- Uses group-based comparisons to improve performance instead of after every trial
+- Calculates advantage and updates policy to increase likelihood of better actions
+![](advantage_pic.png)
+- Uses KL Divergence constraint to prevent drastic changes in policy
+- Overall objective maximizes cumulative reward with stable policy updates
 
 ---
 ### LoRA
@@ -90,11 +98,11 @@ where:
 - **Flexibility:** Easily integrated into various neural network architectures. 
 - **Wide Adoption:** Applied in large language models and other deep learning systems.
 ---
-### PyPokerEngine
----
 ## Initial Results
-- **Unsloth:** Successfully fine tuned our model in Colab
-- **PyPokerEngine:** Used PyPokerEngine to make our model play against itself
+- Successfully fine tuned our model in Colab, showing Unsloth's capabilities in speeding up fine-tuning
+- **PyPokerEngine:** A library for simulating poker games with AI bots
+  - Used PyPokerEngine to make our model play against itself
+- Initial testing through sanity check on output
 
 ![](pokerengine.png)
 
