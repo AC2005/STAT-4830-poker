@@ -84,12 +84,7 @@ where:
 - $r \ll \min(d, k)$
 - **Adapted Weights:** The updated weight matrix becomes: $W' = W + BA$
  --- 
-### Key Benefits & Applications 
-- **Parameter Efficiency:** Fine-tune models with fewer trainable parameters.
-- **Reduced Computational Cost:** Lower memory and compute requirements. 
-- **Flexibility:** Easily integrated into various neural network architectures. 
-- **Wide Adoption:** Applied in large language models and other deep learning systems.
----
+
 ### PyPokerEngine
 ---
 ## Initial Results
