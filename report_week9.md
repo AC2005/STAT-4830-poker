@@ -119,3 +119,6 @@ The implementation of Group Relative Policy Optimization (GRPO) has introduced v
 3. **Runtime Concerns**: Complete training cycles have extended runtimes, requiring careful optimization to balance thoroughness with practical time constraints
 
 Despite these challenges, the combination of structured reasoning outputs, refined reward functions, and self-play reinforcement learning represents a significant advancement in the project's approach to developing a poker-playing AI capable of human-like reasoning and decision-making.
+
+# Next Steps
+The next steps focus on refining training efficiency, enhancing reward structures, and improving self-play performance. First, we will continue optimizing the Unsloth implementation by experimenting with batch sizes, mixed precision training, and caching techniques. A thorough hyperparameter search will be conducted to fine-tune learning rates, reward scaling factors, and PPO clipping parameters, ensuring training stability and efficiency. For self-play, we will diversify the opponent pool, analyze exploitability, and track key performance metrics to ensure strategic adaptability. Consistency checks and rule-based filters will enforce structured reasoning and logical outputs.
