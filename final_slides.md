@@ -40,7 +40,7 @@ paginate: true
 # **Modeling the Problem**
 
 - **Stochastic Nature of Poker:**
-  - Poker is inherently random, with incomplete information and unpredictable outcomes.an*Expected$h$(EV) $R(h)$:** 
+  - Poker is inherently random, with incomplete information and unpredictable outcomes
     $$EV = \sum_{h \in H} P(h) \times R(h)$$
     - $P(h)$ is the probability of a hand outcome $R(h)$ is the corresponding reward.
 - **Goal:** maximize total expected winnings over all rounds $r$
@@ -51,7 +51,7 @@ paginate: true
 # **Modeling the Problem**
 
 - Reinforcement Learning (RL) naturally suited for sequential decision making problems and long term problems
-- **Setting up a basic framework**
+- Setting up a basic framework
   - **States:** Game configurations, including hole cards, community cards, betting history, stack sizes
   - **Actions:** Possible moves (bet, raise, fold, call) & associated amounts
   - **Rewards:** Based on how good the actions are
@@ -178,21 +178,26 @@ paginate: true
 
 # **Results**
 
-![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/individual_reward.jpg)
+![alt text](figures/overall_reward_updated.png)
 
 ---
 
-![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/overall_reward.jpg)
+![alt text](figures/individual_reward_updated.png)
 
 ---
 
-![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/individual.jpg)
+## **Rewards for Self Play Round 1**
+
+![alt text](figures/overall_reward_round1.png)
 
 ---
 
-![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/overall.jpg)
+## **Rewards for Self Play Round 5**
+
+![alt text](figures/overall_reward_round5.png)
 
 ---
+
 
 ## **Results Overall**
 
