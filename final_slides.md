@@ -116,6 +116,25 @@ paginate: true
 
 ---
 
+## **Weight Update, Factorization, and Training Efficiency**
+
+- **Factorization & Weight Update:**
+  
+  - Originally: $O(dk)$ parameters 
+  - With LoRA: $O(r(d + k))$ parameters
+
+- **Training via a New Loss Function:**
+  - $f(B, A) = L(W_0 + BA)$
+    - Optimize this loss by taking gradient steps with respect to $B$ and $A$
+    - $W_0$ is frozen
+- **In our implementation**
+    - $r$ is a hyperparameter
+    - We choose $r = 32$, about $\frac{59,867,136}{3,000,000,000}$ (~2%) of parameters are trainable
+
+---
+
+
+
 
 ## **Optimization & Reward Functions**
 
