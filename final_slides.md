@@ -160,7 +160,8 @@ paginate: true
 # **Self Play**
 - **PyPokerEngine**: A library for simulating poker games with AI bots
   -  Used PyPokerEngine to make our model play against itself
-- Model plays against earlier iterations of itself: uses the output to generate additional training data
+- Model plays against earlier iterations of itself
+  -  Uses the output to generate additional training data
 - Challenges: Took a long time to run
   -  6 instances of our model have to conduct inference and give outputs
 
