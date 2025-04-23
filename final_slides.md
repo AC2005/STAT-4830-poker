@@ -272,7 +272,7 @@ Compare expected progress with actual progress. Explain discrepancies.
 - Add additional analysis and provide rewards for good folds
 - Playing against other models besides our own to evaluate performance
 - Need way more training time and way more compute to achieve our goal
-
+---
 ## **How did AI tools assist your project?**
 
 ### Specific Examples:
