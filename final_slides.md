@@ -30,7 +30,7 @@ paginate: true
   - Uses self-play to iteratively converge at the equilibrium
   - Leverages Monte Carlo Counterfactual Regret Minimization
 ---
-# **Using LLMs**
+**Using LLMs**
 - Transformer models like ChatGPT / GPT-4 don't play GTO
 - LLMs use less compute/resource consumption than CFR
 - Can receive more information in the game tree
