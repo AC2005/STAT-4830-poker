@@ -31,6 +31,7 @@ _Reinforcement Learning & Policy Optimization_
 - Baseline methods and recent advances  
 - Application to our No-Limit Hold’em poker project  
 - Emphasis on algorithmic innovations like GRPO and efficient fine-tuning techniques
+- Traditional GTO methods and Pluribus
 
 ---
 
@@ -49,6 +50,11 @@ _Reinforcement Learning & Policy Optimization_
   Our poker project leverages these techniques to develop an adaptive reasoning model that maximizes Expected Value (EV) under uncertain and adversarial conditions.
 
 ---
+
+# Current Poker Bots and GTO
+- For multi-player non-zero sum games, Nash equilbiria is hard to compute
+- Pluribus is not developed to adhere strictly to GTO, instead it uses a ML approach that can improve as it decides which actions have better outcomes (Monte Carlo Counterfactual Regret Minimization)
+- Neither ChatGPT nor GPT-4 are GTO players, ChatGPT plays conservatively while GPT-4 plays aggressively
 
 # Foundations of Reinforcement Learning
 
