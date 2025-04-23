@@ -165,24 +165,6 @@ paginate: true
   -  6 instances of our model have to conduct inference and give outputs
 
 ---
-# **Limits Encountered & Adaptations**
-
-- **Computational Resources:**
-  - Initially limited to a T4 GPU on Colab, leading to frequent disconnections and slow iteration.
-  - Challenges in accessing scalable GPU resources on platforms like Google Cloud.
-
-- **Impact on Model Training:**
-  - Slow training and iteration speeds forced us to adjust our training framework.
-  - Required tuning reward functions to provide a denser, more continuous feedback signal.
-
----
-- **Adaptation Strategies:**
-  - **Unsloth** played a critical role in speeding up our training cycles.
-  - Optimization of training loops and hyperparameter searches to work within computational constraints.
-  - Adoption of incremental learning strategies to mitigate resource limitations while still aiming for optimal performance.
-
----
-
 # **Results**
 
 ![alt text](figures/overall_reward_updated.png)
@@ -226,6 +208,23 @@ Compare expected progress with actual progress. Explain discrepancies.
 ---
 
 # **Project Reflection**
+## **Limits Encountered & Adaptations**
+
+- **Computational Resources:**
+  - Initially limited to a T4 GPU on Colab, leading to frequent disconnections and slow iteration.
+  - Challenges in accessing scalable GPU resources on platforms like Google Cloud.
+
+- **Impact on Model Training:**
+  - Slow training and iteration speeds forced us to adjust our training framework.
+  - Required tuning reward functions to provide a denser, more continuous feedback signal.
+
+---
+- **Adaptation Strategies:**
+  - **Unsloth** played a critical role in speeding up our training cycles.
+  - Optimization of training loops and hyperparameter searches to work within computational constraints.
+  - Adoption of incremental learning strategies to mitigate resource limitations while still aiming for optimal performance.
+
+---
 
 ## **Technical/Conceptual difficulties**
 
