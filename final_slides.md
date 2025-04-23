@@ -16,24 +16,19 @@ paginate: true
   - Real-time strategic thinking, risk assessment, and adaptation.
   - Decision-making under uncertainty 
 
+- **Success Criteria**
+  - **Win rate** (hands won, stack size, profit over time)
+  - **Performance against GTO (Game Theory Optimal) strategies** 
 
 ---
-# **Success Criteria**
-- **Specific, measurable outcomes**:
-  - **Stack size / money won**.
-  - **Win rate** (hands won, or profit over time).
-  - **Performance against GTO (Game Theory Optimal) strategies** or baseline bots.
-  - **Final ranking** in tournament-style simulations.
+# **Prior Work**
+- Nash equilbiria is hard to compute for multi-way zero sum games
+- State of the art poker bot: **Pluribus**
+  - Doesn't adhere strictly to GTO
+  - Leverages Monte Carlo Con
 
----
-# Literature Review  
-_Reinforcement Learning & Policy Optimization_
-
-- Overview of key RL foundations  
-- Baseline methods and recent advances  
-- Application to our No-Limit Hold’em poker project  
-- Emphasis on algorithmic innovations like GRPO and efficient fine-tuning techniques
-- Traditional GTO methods and Pluribus
+is not developed to adhere strictly to GTO, instead it uses a ML approach that can improve as it decides which actions have better outcomes (Monte Carlo Counterfactual Regret Minimization)
+- Neither ChatGPT nor GPT-4 are GTO players, ChatGPT plays conservatively while GPT-4 plays aggressively
 
 ---
 
@@ -53,10 +48,6 @@ _Reinforcement Learning & Policy Optimization_
 
 ---
 
-# Current Poker Bots and GTO
-- For multi-player non-zero sum games, Nash equilbiria is hard to compute
-- Pluribus is not developed to adhere strictly to GTO, instead it uses a ML approach that can improve as it decides which actions have better outcomes (Monte Carlo Counterfactual Regret Minimization)
-- Neither ChatGPT nor GPT-4 are GTO players, ChatGPT plays conservatively while GPT-4 plays aggressively
 
 # Foundations of Reinforcement Learning
 
@@ -261,7 +252,12 @@ Learn a policy that maximizes the cumulative reward over time.
 
 # Result
 
-![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/self_play_figures.png)
+![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/individual_reward.jpg)
+
+---
+
+
+![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/overall_reward.jpg)
 
 ---
 
