@@ -166,7 +166,7 @@ paginate: true
     - Began with rewards only for exact matches, but feedback was sparse.
     - Introduced partial credit for near-miss outputs (e.g., valid poker moves, near-optimal bet amounts).
   - **Hyperparameter Exploration:**
-    - Systematic grid search over reward thresholds and learning rates.
+    - Exploration for reward thresholds for formatting/answers and learning rates
     - Iterative refinement based on model performance and stability.
 
 ---
@@ -179,9 +179,10 @@ paginate: true
 - **PyPokerEngine**: A library for simulating poker games with AI bots
   -  Used PyPokerEngine to make our model play against itself
 - Model plays against earlier iterations of itself
-  -  Uses the output to generate additional training data
+  -  Uses the output to generate additional training data for GRPO
 - Challenges: Took a long time to run
   -  6 instances of our model have to conduct inference and give outputs
+  -  Due to randomness of poker, need many more simulations to observe long-run results
 
 ---
 # **Results**
@@ -209,12 +210,8 @@ paginate: true
 
 ## **Results Overall**
 
-- **Profit Rate:** Consistent improvement in win rates against older iterations of the models
-
-How do your results compare to baseline methods or the literature?
-
-- **Performance Metrics:**
-  - **Reward Rate:** Upward trend of rewards over time
+  - **Profit Rate:** Difficult to observe due to the randomness of poker. General upward trend
+  - **Reward Rate:** Consistent improvement in rewards
 
 ---
 
