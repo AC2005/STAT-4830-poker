@@ -158,7 +158,7 @@ paginate: true
 
 ---
 
-# **Limits Encountered & Adaptations&
+# **Limits Encountered & Adaptations**
 
 - **Computational Resources:**
   - Initially limited to a T4 GPU on Colab, leading to frequent disconnections and slow iteration.
