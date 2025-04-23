@@ -157,7 +157,10 @@ paginate: true
   - Utilized PyTorch for model development and integration, taking advantage of its efficient computation and GPU support.
 
 ---
-
+# **Self Play**
+- **PyPokerEngine**: A library for simulating poker games with AI bots
+  -  Used PyPokerEngine to make our model play against itself
+---
 # **Limits Encountered & Adaptations**
 
 - **Computational Resources:**
