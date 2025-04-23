@@ -182,7 +182,7 @@ Learn a policy that maximizes the cumulative reward over time.
 - **Stochastic Nature of Poker:**
   - Poker is inherently random, with incomplete information and unpredictable outcomes.
   - **Expected Value (EV) Definition:**
-    $$ EV = \sum_{h \in H} P(h) \times R(h) $$
+    $$EV = \sum_{h \in H} P(h) \times R(h)$$
     where \( P(h) \) is the probability of a hand outcome \( h \) and \( R(h) \) is the corresponding reward.
     
 - **Decision-Making Framework:**
