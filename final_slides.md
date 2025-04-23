@@ -22,80 +22,43 @@ paginate: true
 
 ---
 # **Prior Work**
-- Nash equilbiria is hard to compute for multi-way zero sum games
+- Poker solvers play game theory optimal poker, which is limited
+  - Nash equilibria is hard to compute for multi-way zero sum games
+  - Only able to calculate on a limited set of scenarios, but poker has a very large game tree
+  - Won't take advantage of imperfect opponent
 - State of the art poker bot: **Pluribus**
-  - Doesn't adhere strictly to GTO
-  - Leverages Monte Carlo Con
+  - Uses self-play to iteratively converge at the equilibrium
+  - Leverages Monte Carlo Counterfactual Regret Minimization
 
-is not developed to adhere strictly to GTO, instead it uses a ML approach that can improve as it decides which actions have better outcomes (Monte Carlo Counterfactual Regret Minimization)
-- Neither ChatGPT nor GPT-4 are GTO players, ChatGPT plays conservatively while GPT-4 plays aggressively
-
----
-
-# Introduction
-
-- **Reinforcement Learning (RL):**  
-  A machine learning paradigm where an agent interacts with an environment to learn optimal behavior through trial-and-error feedback.
-
-- **Core Concepts Covered:**  
-  - Markov Decision Processes (MDPs)
-  - Q-Learning & Deep Q-Learning (DQN)
-  - Policy Optimization Methods (PPO, GRPO)
-  - Efficient fine-tuning with LoRA
-
-- **Application Context:**  
-  Our poker project leverages these techniques to develop an adaptive reasoning model that maximizes Expected Value (EV) under uncertain and adversarial conditions.
+# **Using LLMs**
+- Transformer models like ChatGPT / GPT-4 don't play GTO
+- LLMs use less compute/resource consumption than CFR
+- Can receive more information in the game tree
 
 ---
 
+# **Modeling the Problem**
 
-# Foundations of Reinforcement Learning
-
-## Markov Decision Processes (MDPs)
-
-- **States (s):** Possible configurations of the environment.
-- **Actions (a):** Choices available to the agent.
-- **Reward (r):** Immediate feedback assessing the quality of an action.
-- **Transition Function (T):** Probability of moving from one state to another.
-- **Policy (𝜋):** Strategy used by the agent to select actions.
-
-**Objective:**  
-Learn a policy that maximizes the cumulative reward over time.
+- **Stochastic Nature of Poker:**
+  - Poker is inherently random, with incomplete information and unpredictable outcomes.an*Expected$h$(EV) $R(h)$:** 
+    $$EV = \sum_{h \in H} P(h) \times R(h)$$
+    - $P(h)$ is the probability of a hand outcome $R(h)$ is the corresponding reward.
+- **Goal:** maximize total expected winnings over all rounds $r$
+     - **Actions:** Possible moves (bet, raise, fold, call)
 
 ---
 
-# Q-Learning & Deep Q-Learning (DQN)
+# **Modeling the Problem**
 
-## Q-Learning
-- **Off-Policy Algorithm:**  
-  Estimates the action-value function \( Q(s,a) \) representing the expected cumulative reward.
-  
-- **Bellman Equation Update:**  
-
-  $$Q(s,a) \leftarrow Q(s,a) + \alpha \left[r + \gamma \max_{a'} Q(s',a') - Q(s,a)\right]$$
-
-- **Key Point:**  
-  Uses temporal difference updates to iteratively refine Q-value estimates.
+- Reinforcement Learning (RL) naturally suited for sequential decision making problems and long term problems
+- **Setting up a basic framework**
+  - **States:** Game configurations, including hole cards, community cards, betting history, stack sizes
+  - **Actions:** Possible moves (bet, raise, fold, call) & associated amounts
+  - **Rewards:** Based on how good the actions are
 
 ---
 
-## Deep Q-Learning (DQN)
-- **Techniques Employed:**
-  - **Experience Replay:**  
-    Reduces sample correlation by storing and reusing experiences.
-  - **Target Networks:**  
-    Stabilizes learning by maintaining a separate network to generate target Q-values.
-  - **Loss Function:**  
-    Minimizes the Mean Squared Error (MSE) between predicted Q-values and the target values.
-
-- **Outcome:**  
-  Efficient approximation of Q-values with neural networks for real-world applications.
-
----
-
-# Policy Optimization Methods
-
-## From PPO to GRPO
+# **Optimization Methods**
 
 - **Policy Gradient Methods:**  
   Directly optimize the policy by maximizing the expected reward.
@@ -116,17 +79,16 @@ Learn a policy that maximizes the cumulative reward over time.
 
 ---
 
-# Unsloth & Low Rank Adaptation (LoRA)
+# **Unsloth**
 
-## Unsloth Framework
 - **Purpose:**  
   An open-source Python framework optimized for fast fine-tuning and deployment of large language models.
 - **Key Features:**
-  - High-performance PyTorch code with handwritten GPU kernels.
+  - High-performance PyTorch code with haT4 or A100written GPU kernels.
   - Improved memory utilization through typecasting.
   - Scalability: Fine-tuning 8B parameter models on modest GPU setups (e.g., Colab T4).
 ---
-## LoRA (Low Rank Adaptation)
+## **LoRA (Low Rank Adaptation)**
 - **Concept:**  
   Introduces low-rank matrices into pretrained model layers to achieve efficient fine-tuning.
 - **Benefit:**  
@@ -134,7 +96,7 @@ Learn a policy that maximizes the cumulative reward over time.
 
 ---
 
-## Mathematical Formulation of LoRA
+## **Mathematical Formulation of LoRA**
 
 - **Pretrained Weight Matrix:**  
   Let $W \in \mathbb{R}^{d \times k}$ be a pretrained weight matrix.
@@ -154,42 +116,8 @@ Learn a policy that maximizes the cumulative reward over time.
 
 ---
 
-# Summary & Application to Poker
 
-- **Literature Insights:**  
-  - Reinforcement learning provides a solid foundation for reasoning under uncertainty.
-  - Advanced techniques (DQN, GRPO) and fine-tuning methods (LoRA) enable state-of-the-art performance.
-
-- **In Our Poker Project:**  
-  - **MDPs and Q-Learning/DQN** provide the groundwork for modeling decision-making processes.
-  - **Policy Optimization (GRPO)** helps refine strategies in adversarial play.
-  - **Efficient Adaptation (LoRA & Unsloth)** ensures practicality in real-time computational environments.
-
-- **Goal:**
-  Leverage these techniques to build a robust, adaptive model that maximizes expected value in competitive poker settings.
-
-# Modeling the Problem
-
-**Mathematical Formulation & Justification**
-
-- **Stochastic Nature of Poker:**
-  - Poker is inherently random, with incomplete information and unpredictable outcomes.
-  - **Expected Value (EV) Definition:**
-    $$EV = \sum_{h \in H} P(h) \times R(h)$$
-    where \( P(h) \) is the probability of a hand outcome \( h \) and \( R(h) \) is the corresponding reward.
-    
-- **Decision-Making Framework:**
-  - **States:** Game configurations such as card distribution, betting history, and stack sizes.
-  - **Actions:** Possible moves (bet, raise, fold, call).
-  - **Objective:** Maximize EV over a sequence of decisions, balancing risk and reward.
-
-- **Modeling Rationale:**
-  - Reinforcement Learning (RL) is naturally suited to handle sequential decision-making under uncertainty.
-  - Maximizing EV directly addresses the core objective in poker—optimizing long-term profitability.
-
----
-
-## Optimization & Reward Functions
+## **Optimization & Reward Functions**
 
 - **Reward Function Design:**
   - **For Initial Training:**
@@ -205,18 +133,16 @@ Learn a policy that maximizes the cumulative reward over time.
   - Allows gradual, nuanced learning instead of an all-or-nothing reward.
   - Helps the model learn the subtleties of decision-making in an environment where perfect play is rare.
 
+
 ---
-
-# Algorithm Choice, Tuning, & Implementation
-
-**Selecting GRPO & Refining the Model**
+## **Selecting GRPO & Refining the Model**
 
 - **Algorithm Choice: Guaranteed Reward Policy Optimization (GRPO)**
   - **Justification:**
-    - GRPO provides theoretical guarantees for steady policy improvement.
+    - GRPO provides theoreti  guarantees for steady policy improvement.
     - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success.
-    - Aligns with core RL concepts discussed in our course, focusing on cumulative, long-term reward maximization.
 
+---
 - **Tuning Procedure & Hyperparameters:**
   - **Reward Function Tuning:**
     - Began with rewards only for exact matches, but feedback was sparse.
@@ -225,15 +151,14 @@ Learn a policy that maximizes the cumulative reward over time.
     - Systematic grid search over reward thresholds and learning rates.
     - Iterative refinement based on model performance and stability.
 
+---
 - **Implementation Choices:**
   - Leveraged the **Unsloth** framework to optimize GRPO training.
   - Utilized PyTorch for model development and integration, taking advantage of its efficient computation and GPU support.
 
 ---
 
-# Limits Encountered & Adaptations
-
-**Practical Constraints & Solutions**
+# **Limits Encountered & Adaptations&
 
 - **Computational Resources:**
   - Initially limited to a T4 GPU on Colab, leading to frequent disconnections and slow iteration.
@@ -243,6 +168,7 @@ Learn a policy that maximizes the cumulative reward over time.
   - Slow training and iteration speeds forced us to adjust our training framework.
   - Required tuning reward functions to provide a denser, more continuous feedback signal.
 
+---
 - **Adaptation Strategies:**
   - **Unsloth** played a critical role in speeding up our training cycles.
   - Optimization of training loops and hyperparameter searches to work within computational constraints.
@@ -250,27 +176,36 @@ Learn a policy that maximizes the cumulative reward over time.
 
 ---
 
-# Result
+# **Results**
 
 ![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/individual_reward.jpg)
 
 ---
 
-
 ![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/overall_reward.jpg)
 
 ---
 
-## **Results Overview**
-Present your key quantitative results clearly (e.g., graphs, tables).
-
-How do your results compare to baseline methods or the literature?
-
-Provide an interpretation of your results. What do they mean in the context of the problem?
+![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/individual.jpg)
 
 ---
 
-# Demo
+![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/overall.jpg)
+
+---
+
+## **Results Overall**
+
+- **Profit Rate:** Consistent improvement in win rates against older iterations of the models
+
+How do your results compare to baseline methods or the literature?
+
+- **Performance Metrics:**
+  - **Reward Rate:** Upward trend of rewards over time
+
+---
+
+# **Demo**
 
 Showcase a demo or compelling visualization if applicable.
 
