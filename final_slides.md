@@ -67,8 +67,8 @@ paginate: true
   Balances exploration and exploitation with clipping or penalty methods to ensure stable updates.
 ---
 - **GRPO (Group Relative Policy Optimization):**
-  - **Monotonic Improvement:**  
-    Provides theoretical guarantees for steady policy improvement.
+  - **Multi-Agent Environment**
+    Adjusts an agent’s policy relative to a group baseline or relative to other agents’ policies.
   - **Reward-Centric Updates:**  
     Focuses on adjusting policies based on long-term reward estimates.
   - **Empirical Advantages:**  
@@ -139,7 +139,6 @@ paginate: true
 
 - **Algorithm Choice: Group Relative Policy Optimization (GRPO)**
   - **Justification:**
-    - GRPO provides theoretical guarantees for steady policy improvement.
     - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success.
 
 ---
@@ -253,6 +252,11 @@ Compare expected progress with actual progress. Explain discrepancies.
 - Focused more on **self-play**, with multiple iterations of PokerZero playing each other to measure performance improvements.
 
 ---
+# **For The Future**
+- Rewards come from correct moves AND winning the pot, so model receives less rewards for folds, even if they are correct
+- Add additional analysis and provide rewards for good folds
+- Playing against other models besides our own to evaluate performance
+- Need way more training time and way more compute to achieve our goal
 
 ## **How did AI tools assist your project?**
 
