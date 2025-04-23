@@ -26,12 +26,12 @@ paginate: true
   - Nash equilibria is hard to compute for multi-way zero sum games 
   - Only able to calculate on a limited set of scenarios, since poker has a very large game tree
   - Won't take advantage of imperfect opponent
+---
+**Using ML and LLMs**
 - State of the art poker bot: **Pluribus**
   - Uses self-play to iteratively converge close to the Nash Equilibrium
   - Leverages Monte Carlo Counterfactual Regret Minimization
----
-**Using LLMs**
-- Transformer models like ChatGPT / GPT-4 don't play GTO
+- Transformer models like ChatGPT / GPT-4 also don't play GTO
 - LLMs use less compute/resource consumption than CFR
 - Can receive more information in the game tree
 
