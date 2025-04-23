@@ -4,16 +4,18 @@ theme: default
 paginate: true
 ---
 
+# Poker Zero Final Presentation
+
+---
 # **Problem Definition**
 
 - **What are we solving?**
   - We aim to build a **reasoning model** for No-Limit Hold’em poker capable of decision-making under **incomplete information** and **adversarial conditions**.
 
-- **Why is it important or interesting?**
-  - **Poker Complexity**: Real-time strategic thinking, risk assessment, and adaptation.
-  - **Real-World Applications**: 
-    - Decision-making under uncertainty (finance, security, negotiation).
-    - Insights into **behavioral strategies** and **optimal play**.
+- **Importance:**
+  - Real-time strategic thinking, risk assessment, and adaptation.
+  - Decision-making under uncertainty 
+
 
 ---
 # **Success Criteria**
@@ -259,6 +261,10 @@ Learn a policy that maximizes the cumulative reward over time.
 
 # Result
 
+![alt text](https://raw.githubusercontent.com/AC2005/STAT-4830-poker/refs/heads/main/figures/self_play_figures.png)
+
+---
+
 ## **Results Overview**
 Present your key quantitative results clearly (e.g., graphs, tables).
 
@@ -309,17 +315,3 @@ Compare expected progress with actual progress. Explain discrepancies.
 ### Specific Examples:
 - **Literature Review**: Helped in understanding initial concepts and strategies for reinforcement learning.
 - **Debugging**: Assisted in understanding complex algorithms and generating code snippets for reinforcement learning tasks.
-
----
-
-Individual Contributions (Each person must answer):
-
-What was the most surprising result or finding during the project?
-
-Which specific lecture topic, concept, or technique from the course was most useful for your project? Explain how.
-
-How has your perspective on applying optimization in practice changed since the beginning of the course?
-
-If you had two more weeks, what specific next step would you take on the project?
-
-If you could restart the project, what is the single biggest change you would make to your approach or plan?
