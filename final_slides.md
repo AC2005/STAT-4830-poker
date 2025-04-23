@@ -22,12 +22,12 @@ paginate: true
 
 ---
 # **Prior Work**
-- Poker solvers play game theory optimal poker, which is limited
-  - Nash equilibria is hard to compute for multi-way zero sum games
-  - Only able to calculate on a limited set of scenarios, but poker has a very large game tree
+- Poker solvers often play game theory optimal poker, which is limited
+  - Nash equilibria is hard to compute for multi-way zero sum games 
+  - Only able to calculate on a limited set of scenarios, since poker has a very large game tree
   - Won't take advantage of imperfect opponent
 - State of the art poker bot: **Pluribus**
-  - Uses self-play to iteratively converge at the equilibrium
+  - Uses self-play to iteratively converge close to the Nash Equilibrium
   - Leverages Monte Carlo Counterfactual Regret Minimization
 ---
 **Using LLMs**
