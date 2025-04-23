@@ -66,7 +66,7 @@ paginate: true
 - **PPO (Proximal Policy Optimization):**  
   Balances exploration and exploitation with clipping or penalty methods to ensure stable updates.
 ---
-- **GRPO (Guaranteed Reward Policy Optimization):**
+- **GRPO (Group Relative Policy Optimization):**
   - **Monotonic Improvement:**  
     Provides theoretical guarantees for steady policy improvement.
   - **Reward-Centric Updates:**  
