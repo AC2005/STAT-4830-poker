@@ -137,7 +137,7 @@ paginate: true
 ---
 ## **Selecting GRPO & Refining the Model**
 
-- **Algorithm Choice: Guaranteed Reward Policy Optimization (GRPO)**
+- **Algorithm Choice: Group Relative Policy Optimization (GRPO)**
   - **Justification:**
     - GRPO provides theoretical guarantees for steady policy improvement.
     - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success.
