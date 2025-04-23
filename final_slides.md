@@ -139,7 +139,7 @@ paginate: true
 
 - **Algorithm Choice: Guaranteed Reward Policy Optimization (GRPO)**
   - **Justification:**
-    - GRPO provides theoreti  guarantees for steady policy improvement.
+    - GRPO provides theoretical guarantees for steady policy improvement.
     - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success.
 
 ---
