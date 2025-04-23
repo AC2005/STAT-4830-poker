@@ -157,7 +157,7 @@ Learn a policy that maximizes the cumulative reward over time.
 - **Adapted Weights:**  
   The new weight matrix is given by:
   
-  $$ W' = W + BA $$
+  $$W' = W + BA$$
 
 ---
 
