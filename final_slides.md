@@ -254,7 +254,7 @@ $$L^{\text{GRPO}}(\theta)=\hat{\mathbb{E}}_{s,\{y_i,r_i\}}\Big[\frac{1}{G}\sum_{
 
 ## **How The Project Evolved**
 
-- Trained initial model using **GRPO** and attempted self-play reinforcement learning with **PPO** to generate initial neural layers.
+- Trained initial model using **GRPO** and attempted self-play reinforcement learning with **PPO**.
 - **Challenge**: Model wasn't converging.
   - Shifted to using the self-play environment to generate additional training data for **GRPO**.
 - Focused more on **self-play**, with multiple iterations of PokerZero playing each other to measure performance improvements.
