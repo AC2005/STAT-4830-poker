@@ -59,26 +59,28 @@ paginate: true
 
 # **Optimization Methods**
 
-- **Policy Gradient Methods:**  
-  Directly optimize the policy by maximizing the expected reward.
-
-- **PPO (Proximal Policy Optimization):**  
-  - Balances exploration and exploitation with clipping or penalty methods to ensure stable updates
-  - **Estimated Advantage:** $\hat{A}_t=Q(s_t,a_t) - V(s_t)$
-  - **Probability Ratio:** $\rho_t(\theta) = \tfrac{\pi_\theta(a_t \mid s_t)}{\pi_{\text{old}}(a_t \mid s_t)}$
-  - **Clipped Objective:** $L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\Big[\min\big(\rho_t(\theta)\,\hat{A}_t,\;\text{clip}(\rho_t(\theta),1 - \epsilon,1 + \epsilon)\,\hat{A}_t\big)\Big]$
-  - **Goal:** Constrain updates so $\rho_t(\theta)$ does not deviate too far from 1.  
-  - **Result:** More stable training, preventing excessively large jumps in policy probability updates.
+**Policy Gradient Methods:**  
+  - Directly optimize the policy by maximizing the expected reward.
+    - Ex. PPO, GRPO
 
 ---
-- **GRPO (Group Relative Policy Optimization):**
-  - **Multi-Agent Environment**
-    Adjusts an agent's policy relative to a group baseline or relative to other agents' policies.
-  - **Empirical Advantages:**  
-    Demonstrates superior performance compared to PPO in several benchmarks.
 
-- **Relevance to Poker:**  
-  Enables strategic adaptation and robust performance in complex, adversarial settings.
+# **PPO (Proximal Policy Optimization):**  
+- Balances exploration and exploitation with clipping or penalty methods to ensure stable updates
+- **Estimated Advantage:** $\hat{A}_t=Q(s_t,a_t) - V(s_t)$
+- **Probability Ratio:** $\rho_t(\theta) = \tfrac{\pi_\theta(a_t \mid s_t)}{\pi_{\text{old}}(a_t \mid s_t)}$
+- **Clipped Objective:** $L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\Big[\min\big(\rho_t(\theta)\,\hat{A}_t,\;\text{clip}(\rho_t(\theta),1 - \epsilon,1 + \epsilon)\,\hat{A}_t\big)\Big]$
+- **Goal:** Constrain updates so $\rho_t(\theta)$ does not deviate too far from 1.  
+- **Result:** More stable training, preventing excessively large jumps in policy probability updates.
+
+---
+# **GRPO (Group Relative Policy Optimization):**
+  - **Multi-Agent Environment**
+    - Adjusts an agent's policy relative to a group baseline or relative to other agents' policies.
+  - **Empirical Advantages:**  
+    - Demonstrates superior performance compared to PPO in several benchmarks.
+  - **Relevance to Poker:**  
+    - Enables strategic adaptation and robust performance in complex, adversarial settings.
 
 ---
 - Instead of training a separate value network as a baseline, GRPO uses group-based rewards as a reference.  
