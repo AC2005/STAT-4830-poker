@@ -31,7 +31,6 @@ paginate: true
 - State of the art poker bot: **Pluribus**
   - Uses self-play to iteratively converge close to the Nash Equilibrium
   - Leverages Monte Carlo Counterfactual Regret Minimization
-- Transformer models like ChatGPT / GPT-4 also do not play GTO
 - LLMs use less compute/resource consumption than CFR <!--- have to evaluate every possible action from every state in order to calculate and update regret -->
 - Can receive more information in the game tree <!-- doesn't need to make simplifications above -->
 
@@ -66,7 +65,7 @@ paginate: true
 - **PPO (Proximal Policy Optimization):**  
   - Balances exploration and exploitation with clipping or penalty methods to ensure stable updates
   - **Probability Ratio:** $\rho_t(\theta) = \tfrac{\pi_\theta(a_t \mid s_t)}{\pi_{\text{old}}(a_t \mid s_t)}$
-  - **Estimated Advantage:** $\hat{A}_t$
+  - **Estimated Advantage:** $\hat{A}_t=Q(s_t,a_t) - V(s_t)$
   - **Clipped Objective:** $L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\Big[\min\big(\rho_t(\theta)\,\hat{A}_t,\;\text{clip}(\rho_t(\theta),1 - \epsilon,1 + \epsilon)\,\hat{A}_t\big)\Big]$
   - **Goal:** Constrain updates so $\rho_t(\theta)$ does not deviate too far from 1.  
   - **Result:** More stable training, preventing excessively large jumps in policy probability updates.
@@ -84,7 +83,7 @@ paginate: true
 ---
 - Instead of training a separate value network as a baseline, GRPO uses group-based rewards as a reference.  
 - For each prompt (or state), the policy samples $G$ completions/trajectories. Each completion $y_i$ gets a reward $r_i$.  
-- The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $$\hat{A}_i = r_i - \bar{r}$$.  
+- The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $\hat{A}_i = r_i - \bar{r}$.  
 - This advantage says “How did completion $i$ compare to the average in that group?”
 
 - PPO-Style Update, uses clipped objective as well
