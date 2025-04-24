@@ -82,8 +82,8 @@ paginate: true
 - This advantage says “How did completion $i$ compare to the average in that group?”
 
 - **PPO-Style Update**  
-  - Uses a clipped objective (\(\min[\rho_i(\theta)\hat{A}_i,\;\mathrm{clip}(\rho_i(\theta))\,\hat{A}_i]\)) so that the policy doesn’t shift too abruptly.  
-  - \(\rho_i(\theta)\) is the ratio \(\frac{\pi_\theta(a_i \mid s)}{\pi_{\text{old}}(a_i \mid s)}\), the same as in PPO.
+  - Uses a clipped objective $$(\min[\rho_i(\theta)\hat{A}_i,\;\mathrm{clip}(\rho_i(\theta))\,\hat{A}_i]$$ so that the policy doesn’t shift too abruptly.  
+  - $$\rho_i(\theta)$$ is the ratio $$\frac{\pi_\theta(a_i \mid s)}{\pi_{\text{old}}(a_i \mid s)}$$, the same as in PPO.
 --
 
 # **Unsloth**
