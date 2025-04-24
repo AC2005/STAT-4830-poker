@@ -10,7 +10,7 @@ paginate: true
 # **Problem Definition**
 
 - **What are we solving?**
-  - We aim to build a **reasoning model** for No-Limit Hold’em poker capable of decision-making under **incomplete information** and **adversarial conditions**
+  - We aim to build a **reasoning model** for No-Limit Hold'em poker capable of decision-making under **incomplete information** and **adversarial conditions**
 
 - **Importance:**
   - Real-time strategic thinking, risk assessment, and adaptation
@@ -73,9 +73,9 @@ paginate: true
 ---
 - **GRPO (Group Relative Policy Optimization):**
   - **Multi-Agent Environment**
-    Adjusts an agent’s policy relative to a group baseline or relative to other agents’ policies.
+    Adjusts an agent's policy relative to a group baseline or relative to other agents' policies.
   - **Empirical Advantages:**  
-    Demonstrates superior performance compared to PPO and TRPO in several benchmarks.
+    Demonstrates superior performance compared to PPO in several benchmarks.
 
 - **Relevance to Poker:**  
   Enables strategic adaptation and robust performance in complex, adversarial settings.
@@ -84,7 +84,7 @@ paginate: true
 - Instead of training a separate value network as a baseline, GRPO uses group-based rewards as a reference.  
 - For each prompt (or state), the policy samples $G$ completions/trajectories. Each completion $y_i$ gets a reward $r_i$.  
 - The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $\hat{A}_i = r_i - \bar{r}$.  
-- This advantage says “How did completion $i$ compare to the average in that group?”
+- This advantage says "How did completion $i$ compare to the average in that group?"
 
 - PPO-Style Update, uses clipped objective as well
 
@@ -114,7 +114,7 @@ paginate: true
   - **Reward Function Tuning:**
     - Began with rewards only for exact matches, but feedback was sparse
     - Introduced partial credit for near-miss outputs (e.g., valid poker moves, near-optimal bet amounts)
-    - Tweaked reward functions to prevent reward hacking
+    - Tweaked reward functions to prevent reward hacking <!--- check that if output contains fold and correct answer is fold, output also does not contain call or raise-->
   - **Hyperparameter Exploration:**
     - Exploration for reward thresholds for formatting/answers and learning rates
     - Iterative refinement based on model performance and observation of reward trends
@@ -171,15 +171,20 @@ paginate: true
 
 # **Fine-tuning and self play**
 - **Initial Fine-Tuning:**
-  - Used GRPO to train our model on a dataset of poker hands
+  - Used GRPO to train our model on a dataset of poker hands to learn foundations
   - **Dataset:** 500,000 poker hands from the **PokerBench** dataset
+<img src="figures/pokerbench_example.png" width="750" alt="PokerBench example" />
+
+---
+
 - **PyPokerEngine**: A library for simulating poker games with AI bots
   -  Used PyPokerEngine to make our model play against itself
 - Model plays against earlier iterations of itself
   -  Uses the output to generate additional training data for GRPO
-- Challenges: Took a long time to run
+  -  Train on additional data, and then continue playing against itself
+- Challenges: Long training time
   -  6 instances of our model have to conduct inference and give outputs
-  -  Due to randomness of poker, need many more simulations to observe long-run results
+  -  Due to randomness of poker, need many more simulations to observe long-term results
 
 ---
 # **Results**
@@ -204,11 +209,25 @@ paginate: true
 
 ---
 
+## **Model Winrate Progression**
+
+<center><img src="figures/win_rate_2.png" width="500" alt="PokerBench example"/></center>
+
+
+---
+
+
+## **Self-Play Generated Data Example**
+
+![alt text](figures/self_play_example_data.png)
+
+---
+
 
 ## **Results Overall**
 
-  - **Profit Rate:** Difficult to observe due to the randomness of poker. General upward trend
-  - **Reward Rate:** Consistent improvement in rewards
+  - **Fine-Tuning Improvements:** Model is improving and finding rewards during fine-tuning, demonstrating complex reasoning capabilities of LLMs
+  - **Self-Play Improvements:** Models further trained through self-play do better, showing potential for continued improvement through this pipeline
 
 ---
 
@@ -216,11 +235,11 @@ paginate: true
 ## **Limits Encountered & Adaptations**
 
 - **Computational Resources:**
-  - Initially limited to a T4 GPU on Colab, leading to frequent disconnections and slow iteration.
+  - On an A100 GPU, fine-tuning on around 1000 PokerBench examples and 250 examples from self-play takes around 10 hours
   - Challenges in accessing scalable GPU resources on platforms like Google Cloud.
 
 - **Impact on Model Training:**
-  - Slow training and iteration speeds forced us to adjust our training framework.
+  - Slow training and iteration speeds forced us to adjust our training framework (ex. reduce LoRA r parameter size)
   - Required tuning reward functions to provide a denser, more continuous feedback signal.
 
 ---
@@ -228,14 +247,15 @@ paginate: true
 ## **What part of the project workflow was easier than expected? Harder?**
 
 ### **Easier**
-- Implementing basic reinforcement learning algorithms using **unsloth** directly within Colab.
+- Implementing basic reinforcement learning algorithms using **unsloth** directly within Colab
 
 ### **Harder**
-- Debugging and tuning reinforcement learning models to converge effectively in self-play scenarios.
+- Debugging and tuning reinforcement learning models to converge effectively in self-play scenarios
+- Converting PyPokerEngine outputs into prompts and labels for our self-play training
 
 ---
 
-## **How the project evolved**
+## **How The Project Evolved**
 
 - Trained initial model using **GRPO** and attempted self-play reinforcement learning with **PPO** to generate initial neural layers.
 - **Challenge**: Model wasn't converging.
@@ -244,13 +264,11 @@ paginate: true
 
 ---
 # **For The Future**
-- Rewards come from correct moves AND winning the pot, so model receives less rewards for folds, even if they are correct
-- Add additional analysis and provide rewards for good folds
-- Playing against other models besides our own to evaluate performance
+- Figure out a way to assess what is a good "fold" during self-play to prevent biasing our model towards calling or raising during the self-play training
+- Playing against other models (or humans) besides our own to evaluate performance
 - Need way more training time and way more compute to achieve our goal
 ---
-## **How did AI tools assist your project?**
+## **AI Tool Use**
 
-### Specific Examples:
 - **Literature Review**: Helped in understanding initial concepts and strategies for reinforcement learning.
 - **Debugging**: Assisted in understanding complex algorithms and generating code snippets for reinforcement learning tasks.
