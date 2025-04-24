@@ -75,7 +75,7 @@ paginate: true
   - **Multi-Agent Environment**
     Adjusts an agent’s policy relative to a group baseline or relative to other agents’ policies.
   - **Empirical Advantages:**  
-    Demonstrates superior performance compared to PPO and TRPO in several benchmarks.
+    Demonstrates superior performance compared to PPO in several benchmarks.
 
 - **Relevance to Poker:**  
   Enables strategic adaptation and robust performance in complex, adversarial settings.
