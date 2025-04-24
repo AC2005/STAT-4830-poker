@@ -64,7 +64,13 @@ paginate: true
   Directly optimize the policy by maximizing the expected reward.
 
 - **PPO (Proximal Policy Optimization):**  
-  Balances exploration and exploitation with clipping or penalty methods to ensure stable updates.
+  - Balances exploration and exploitation with clipping or penalty methods to ensure stable updates
+  - **Probability Ratio:** $\rho_t(\theta) = \tfrac{\pi_\theta(a_t \mid s_t)}{\pi_{\text{old}}(a_t \mid s_t)}$
+  - **Estimated Advantage:** $\hat{A}_t$
+  - **Clipped Objective:** $L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\Big[\min\big(\rho_t(\theta)\,\hat{A}_t,\;\text{clip}(\rho_t(\theta),1 - \epsilon,1 + \epsilon)\,\hat{A}_t\big)\Big]$
+  - **Goal:** Constrain updates so $\rho_t(\theta)$ does not deviate too far from 1.  
+  - **Result:** More stable training, preventing excessively large jumps in policy probability updates.
+
 ---
 - **GRPO (Group Relative Policy Optimization):**
   - **Multi-Agent Environment**
@@ -76,6 +82,13 @@ paginate: true
   Enables strategic adaptation and robust performance in complex, adversarial settings.
 
 ---
+- Instead of training a separate value network as a baseline, GRPO uses group-based rewards as a reference.  
+- For each prompt (or state), the policy samples $G$ completions/trajectories. Each completion $y_i$ gets a reward $r_i$.  
+- The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $$\hat{A}_i = r_i - \bar{r}$$.  
+- This advantage says “How did completion $i$ compare to the average in that group?”
+
+- PPO-Style Update, uses clipped objective as well
+--
 
 # **Unsloth**
 
@@ -139,7 +152,9 @@ paginate: true
 
 - **Algorithm Choice: Group Relative Policy Optimization (GRPO)**
   - **Justification:**
-    - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success
+    - Better than PPO for multi-agent situations
+    - Requires much less compute (Unsloth)
+    - Performs better in delayed reward situations, like Poker
 
 ---
 - **Tuning Procedure & Hyperparameters:**
