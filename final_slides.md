@@ -64,7 +64,13 @@ paginate: true
   Directly optimize the policy by maximizing the expected reward.
 
 - **PPO (Proximal Policy Optimization):**  
-  Balances exploration and exploitation with clipping or penalty methods to ensure stable updates.
+  - Balances exploration and exploitation with clipping or penalty methods to ensure stable updates
+  - **Probability Ratio:** $\rho_t(\theta) = \tfrac{\pi_\theta(a_t \mid s_t)}{\pi_{\text{old}}(a_t \mid s_t)}$
+  - **Estimated Advantage:** $\hat{A}_t$
+  - **Clipped Objective:** $L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\Big[\min\big(\rho_t(\theta)\,\hat{A}_t,\;\text{clip}(\rho_t(\theta),1 - \epsilon,1 + \epsilon)\,\hat{A}_t\big)\Big]$
+  - **Goal:** Constrain updates so $\rho_t(\theta)$ does not deviate too far from 1.  
+  - **Result:** More stable training, preventing excessively large jumps in policy probability updates.
+
 ---
 - **GRPO (Group Relative Policy Optimization):**
   - **Multi-Agent Environment**
