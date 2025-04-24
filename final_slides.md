@@ -152,7 +152,9 @@ paginate: true
 
 - **Algorithm Choice: Group Relative Policy Optimization (GRPO)**
   - **Justification:**
-    - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success
+    - Better than PPO for multi-agent situations
+    - Requires much less compute (Unsloth)
+    - Performs better in delayed reward situations, like Poker
 
 ---
 - **Tuning Procedure & Hyperparameters:**
