@@ -84,9 +84,8 @@ paginate: true
 - Instead of training a separate value network as a baseline, GRPO uses group-based rewards as a reference.  
 - For each prompt (or state), the policy samples $G$ completions/trajectories. Each completion $y_i$ gets a reward $r_i$.  
 - The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $\hat{A}_i = r_i - \bar{r}$.  
-- This advantage says "How did completion $i$ compare to the average in that group?"
-
-- PPO-Style Update, uses clipped objective as well
+- This advantage says “How did completion $i$ compare to the average in that group?”
+- $L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\Big[\min\big(\rho_t(\theta)\,\hat{A}_t,\;\text{clip}(\rho_t(\theta),1 - \epsilon,1 + \epsilon)\,\hat{A}_t\big)\Big]$
 
 ---
 
