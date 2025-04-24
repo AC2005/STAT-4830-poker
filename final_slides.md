@@ -221,19 +221,6 @@ paginate: true
   - Required tuning reward functions to provide a denser, more continuous feedback signal.
 
 ---
-- **Adaptation Strategies:**
-  - **Unsloth** played a critical role in speeding up our training cycles.
-  - Optimization of training loops and hyperparameter searches to work within computational constraints.
-  - Adoption of incremental learning strategies to mitigate resource limitations while still aiming for optimal performance.
-
----
-
-## **Technical/Conceptual difficulties**
-
-- Understanding the complexity of poker strategies and how to model them effectively.
-- Implementing reinforcement learning algorithms, especially in the context of self-play.
-
----
 
 ## **What part of the project workflow was easier than expected? Harder?**
 
