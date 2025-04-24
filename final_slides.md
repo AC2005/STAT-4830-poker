@@ -70,7 +70,6 @@ paginate: true
 - **Estimated Advantage:** $\hat{A}_t=Q(s_t,a_t) - V(s_t)$
 - **Probability Ratio:** $\rho_t(\theta) = \tfrac{\pi_\theta(a_t \mid s_t)}{\pi_{\text{old}}(a_t \mid s_t)}$
 - **Clipped Objective:** $L^{\text{CLIP}}(\theta) = \mathbb{E}_t\!\Big[\min\big(\rho_t(\theta)\,\hat{A}_t,\;\text{clip}(\rho_t(\theta),1 - \epsilon,1 + \epsilon)\,\hat{A}_t\big)\Big]$
-- **Goal:** Constrain updates so $\rho_t(\theta)$ does not deviate too far from 1.  
 - **Result:** More stable training, preventing excessively large jumps in policy probability updates.
 
 ---
@@ -79,15 +78,13 @@ paginate: true
     - Adjusts an agent's policy relative to a group baseline or relative to other agents' policies.
   - **Empirical Advantages:**  
     - Demonstrates superior performance compared to PPO in several benchmarks.
-  - **Relevance to Poker:**  
-    - Enables strategic adaptation and robust performance in complex, adversarial settings.
 
 ---
 - Instead of training a separate value network as a baseline, GRPO uses group-based rewards as a reference.  
 - For each prompt (or state), the policy samples $G$ completions/trajectories. Each completion $y_i$ gets a reward $r_i$.  
 - The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $\hat{A}_i = r_i - \bar{r}$.  
 - This advantage says “How did completion $i$ compare to the average in that group?”
-- $$L^{\text{GRPO}}(\theta)=\hat{\mathbb{E}}_{s,\{y_i,r_i\}}\Big[\frac{1}{G}\sum_{i=1}^{G}\sum_{t}\min\big(\rho_{i,t}(\theta)\hat{A}_i,\text{clip}(\rho_{i,t}(\theta),1-\epsilon,1+\epsilon)\hat{A}_i\big)\Big]$$
+$$L^{\text{GRPO}}(\theta)=\hat{\mathbb{E}}_{s,\{y_i,r_i\}}\Big[\frac{1}{G}\sum_{i=1}^{G}\sum_{t}\min\big(\rho_{i,t}(\theta)\hat{A}_i,\text{clip}(\rho_{i,t}(\theta),1-\epsilon,1+\epsilon)\hat{A}_i\big)\Big]$$
 ---
 
 ## **Optimization & Reward Functions**
