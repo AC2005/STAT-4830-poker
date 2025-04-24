@@ -31,7 +31,6 @@ paginate: true
 - State of the art poker bot: **Pluribus**
   - Uses self-play to iteratively converge close to the Nash Equilibrium
   - Leverages Monte Carlo Counterfactual Regret Minimization
-- Transformer models like ChatGPT / GPT-4 also do not play GTO
 - LLMs use less compute/resource consumption than CFR <!--- have to evaluate every possible action from every state in order to calculate and update regret -->
 - Can receive more information in the game tree <!-- doesn't need to make simplifications above -->
 
