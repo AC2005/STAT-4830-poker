@@ -2,6 +2,7 @@
 marp: true
 theme: default
 paginate: true
+katex: true
 ---
 
 # Poker Zero Final Presentation
