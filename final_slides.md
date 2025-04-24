@@ -88,6 +88,7 @@ paginate: true
 - The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $\hat{A}_i = r_i - \bar{r}$.  
 - This advantage says “How did completion $i$ compare to the average in that group?”
 - $$L^{\text{GRPO}}(\theta)=\hat{\mathbb{E}}_{s,\{y_i,r_i\}}\Big[\frac{1}{G}\sum_{i=1}^{G}\sum_{t}\min\big(\rho_{i,t}(\theta)\hat{A}_i,\text{clip}(\rho_{i,t}(\theta),1-\epsilon,1+\epsilon)\hat{A}_i\big)\Big]$$
+- $$L^{\text{GRPO}}(\theta)=\hat{\mathbb{E}}_{s,\{y_i,r_i\}}\Big[\frac{1}{G}\sum_{i=1}^{G}\sum_t\min\big(\rho_{i,t}(\theta)\hat{A}_i,\text{clip}(\rho_i(\theta),1-\epsilon,1+\epsilon)\hat{A}_i\big)\Big)$$
 ---
 
 ## **Optimization & Reward Functions**
