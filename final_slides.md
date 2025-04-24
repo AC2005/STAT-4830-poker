@@ -88,17 +88,7 @@ paginate: true
 - This advantage says “How did completion $i$ compare to the average in that group?”
 
 - PPO-Style Update, uses clipped objective as well
---
 
-# **Unsloth**
-
-- **Purpose:**  
-  An open-source Python framework optimized for fast fine-tuning and deployment of large language models.
-- **Key Features:**
-  - Optimized PyTorch code
-  - Handwritten GPU kernels to speed up inference
-  - Significantly reduced memory usage
-  - Allows us to fine-tune 8B parameter models on a Colab T4 GPU
 ---
 ## **LoRA (Low Rank Adaptation)**
 
@@ -167,9 +157,17 @@ paginate: true
     - Iterative refinement based on model performance and observation of reward trends
 
 ---
-- **Implementation Choices:**
-  - Leveraged the **Unsloth** framework to optimize GRPO training.
-  - Utilized PyTorch for model development and integration, taking advantage of its efficient computation and GPU support.
+# **Implementation Choices:**
+---
+# **Unsloth**
+
+- **Purpose:**  
+  An open-source Python framework optimized for fast fine-tuning and deployment of large language models.
+- **Key Features:**
+  - Optimized PyTorch code
+  - Handwritten GPU kernels to speed up inference
+  - Significantly reduced memory usage
+  - Allows us to fine-tune 8B parameter models on a Colab T4 GPU
 
 ---
 # **Self Play**
