@@ -209,14 +209,6 @@ paginate: true
 
 ---
 
-# **Demo**
-
-Showcase a demo or compelling visualization if applicable.
-
-Compare expected progress with actual progress. Explain discrepancies.
-
----
-
 # **Project Reflection**
 ## **Limits Encountered & Adaptations**
 
