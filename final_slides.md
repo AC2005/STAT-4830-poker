@@ -69,8 +69,6 @@ paginate: true
 - **GRPO (Group Relative Policy Optimization):**
   - **Multi-Agent Environment**
     Adjusts an agent’s policy relative to a group baseline or relative to other agents’ policies.
-  - **Reward-Centric Updates:**  
-    Focuses on adjusting policies based on long-term reward estimates.
   - **Empirical Advantages:**  
     Demonstrates superior performance compared to PPO and TRPO in several benchmarks.
 
@@ -79,9 +77,9 @@ paginate: true
 
 ---
 - Instead of training a separate value network as a baseline, GRPO uses group-based rewards as a reference.  
-- For each prompt (or state), the policy samples \(G\) completions/trajectories. Each completion \(y_i\) gets a reward \(r_i\).  
-- The *group average* \(\bar{r}\) is subtracted from each \(r_i\) to form the relative advantage \(\hat{A}_i = r_i - \bar{r}\).  
-- This advantage says “How did completion \(i\) compare to the *average* in that group?”
+- For each prompt (or state), the policy samples $G$ completions/trajectories. Each completion $y_i$ gets a reward $r_i$.  
+- The *group average* $\bar{r}$ is subtracted from each $r_i$ to form the relative advantage $$\hat{A}_i = r_i - \bar{r}$$.  
+- This advantage says “How did completion $i$ compare to the average in that group?”
 
 - **PPO-Style Update**  
   - Uses a clipped objective (\(\min[\rho_i(\theta)\hat{A}_i,\;\mathrm{clip}(\rho_i(\theta))\,\hat{A}_i]\)) so that the policy doesn’t shift too abruptly.  
