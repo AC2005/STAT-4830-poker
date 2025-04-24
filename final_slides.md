@@ -90,14 +90,6 @@ paginate: true
   - Allows us to fine-tune 8B parameter models on a Colab T4 GPU
 ---
 ## **LoRA (Low Rank Adaptation)**
-- **Concept:**  
-  Introduces low-rank matrices into pretrained model layers to achieve efficient fine-tuning.
-- **Benefit:**  
-  Significant performance gains with a minimal increase in parameters—ideal for adapting large models in resource-constrained environments.
-
----
-
-## **Mathematical Formulation of LoRA**
 
 - **Pretrained Weight Matrix:**  
   Let $W \in \mathbb{R}^{d \times k}$ be a pretrained weight matrix.
@@ -119,15 +111,14 @@ paginate: true
 
 ## **Weight Update, Factorization, and Training Efficiency**
 
-- **Factorization & Weight Update:**
-  
-  - Originally: $O(dk)$ parameters 
-  - With LoRA: $O(r(d + k))$ parameters
-
 - **Training via a New Loss Function:**
-  - $f(B, A) = L(W_0 + BA)$
+  - $f(B, A) = L(W + BA)$
     - Optimize this loss by taking gradient steps with respect to $B$ and $A$
-    - $W_0$ is frozen
+    - $W$ is frozen
+- **Parameter Counts:**
+  - Originally: $O(dk)$ 
+  - With LoRA: $O(r(d + k))$ 
+
 - **In our implementation**
     - $r$ is a hyperparameter
     - We choose $r = 32$, about $\frac{59,867,136}{3,000,000,000}$ (~2%) of parameters are trainable
@@ -135,12 +126,9 @@ paginate: true
 ---
 
 
-
-
 ## **Optimization & Reward Functions**
 
-- **Reward Function Design:**
-  - **For Initial Training:**
+- **Reward Function Design For Initial Training:**
     - **Negative Reward:** Apply penalties for outputs that violate constraints.
     - **Zero Reward:** No reward for clearly incorrect moves.
   - **Partial Rewards:**
