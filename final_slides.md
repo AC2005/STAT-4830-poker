@@ -89,42 +89,6 @@ paginate: true
 - PPO-Style Update, uses clipped objective as well
 
 ---
-## **LoRA (Low Rank Adaptation)**
-
-- **Pretrained Weight Matrix:**  
-  Let $W \in \mathbb{R}^{d \times k}$ be a pretrained weight matrix.
-
-- **Low-Rank Update:**  
-  Approximate the weight update as:
-  
-  $$\Delta W = BA$$
-  
-  where:
-  - $B \in \mathbb{R}^{d \times r}$, $A \in \mathbb{R}^{r \times k}$, $r \ll \min(d,k)$
-
-- **Adapted Weights:**  
-  The new weight matrix is given by:
-  
-  $$W' = W + BA$$
-
----
-
-## **Weight Update, Factorization, and Training Efficiency**
-
-- **Training via a New Loss Function:**
-  - $f(B, A) = L(W + BA)$
-    - Optimize this loss by taking gradient steps with respect to $B$ and $A$
-    - $W$ is frozen
-- **Parameter Counts:**
-  - Originally: $O(dk)$ 
-  - With LoRA: $O(r(d + k))$ 
-
-- **In our implementation**
-    - $r$ is a hyperparameter
-    - We choose $r = 32$, about $\frac{59,867,136}{3,000,000,000}$ (~2%) of parameters are trainable <!--- This helps us later when we save different models from self-play, since we only need to save LoRA weights for each model rather than the whole thing -->
-
----
-
 
 ## **Optimization & Reward Functions**
 
@@ -169,7 +133,46 @@ paginate: true
   - Allows us to fine-tune 8B parameter models on a Colab T4 GPU
 
 ---
-# **Self Play**
+## **LoRA (Low Rank Adaptation)**
+
+- **Pretrained Weight Matrix:**  
+  Let $W \in \mathbb{R}^{d \times k}$ be a pretrained weight matrix.
+
+- **Low-Rank Update:**  
+  Approximate the weight update as:
+  
+  $$\Delta W = BA$$
+  
+  where:
+  - $B \in \mathbb{R}^{d \times r}$, $A \in \mathbb{R}^{r \times k}$, $r \ll \min(d,k)$
+
+- **Adapted Weights:**  
+  The new weight matrix is given by:
+  
+  $$W' = W + BA$$
+
+---
+
+## **Weight Update, Factorization, and Training Efficiency**
+
+- **Training via a New Loss Function:**
+  - $f(B, A) = L(W + BA)$
+    - Optimize this loss by taking gradient steps with respect to $B$ and $A$
+    - $W$ is frozen
+- **Parameter Counts:**
+  - Originally: $O(dk)$ 
+  - With LoRA: $O(r(d + k))$ 
+
+- **In our implementation**
+    - $r$ is a hyperparameter: we use $r = 32$, $\frac{59,867,136}{3,000,000,000}$ (~2%) trainable parameters
+    - Only need to save LoRA weights for each model 
+
+---
+
+# **Fine-tuning and self play**
+- **Initial Fine-Tuning:**
+  - Used GRPO to train our model on a dataset of poker hands
+  - **Dataset:** 500,000 poker hands from the **PokerBench** dataset
 - **PyPokerEngine**: A library for simulating poker games with AI bots
   -  Used PyPokerEngine to make our model play against itself
 - Model plays against earlier iterations of itself
