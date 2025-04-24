@@ -84,9 +84,10 @@ paginate: true
 - **Purpose:**  
   An open-source Python framework optimized for fast fine-tuning and deployment of large language models.
 - **Key Features:**
-  - High-performance PyTorch code with haT4 or A100written GPU kernels.
-  - Improved memory utilization through typecasting.
-  - Scalability: Fine-tuning 8B parameter models on modest GPU setups (e.g., Colab T4).
+  - Optimized PyTorch code
+  - Handwritten GPU kernels to speed up inference
+  - Significantly reduced memory usage
+  - Allows us to fine-tune 8B parameter models on a Colab T4 GPU
 ---
 ## **LoRA (Low Rank Adaptation)**
 - **Concept:**  
