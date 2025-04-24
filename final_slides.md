@@ -10,10 +10,10 @@ paginate: true
 # **Problem Definition**
 
 - **What are we solving?**
-  - We aim to build a **reasoning model** for No-Limit Hold’em poker capable of decision-making under **incomplete information** and **adversarial conditions**.
+  - We aim to build a **reasoning model** for No-Limit Hold’em poker capable of decision-making under **incomplete information** and **adversarial conditions**
 
 - **Importance:**
-  - Real-time strategic thinking, risk assessment, and adaptation.
+  - Real-time strategic thinking, risk assessment, and adaptation
   - Decision-making under uncertainty 
 
 - **Success Criteria**
@@ -22,18 +22,18 @@ paginate: true
 
 ---
 # **Prior Work**
-- Poker solvers often play game theory optimal poker, which is limited
+- Poker solvers often play game theory optimal poker (unexploitable decisions), which has limitations <!--- unexploitable != most profitable -->
   - Nash equilibria is hard to compute for multi-way zero sum games 
-  - Only able to calculate on a limited set of scenarios, since poker has a very large game tree
-  - Won't take advantage of imperfect opponent
+  - Only able to calculate on a limited set of scenarios (ex. reduced bet sizes), since poker has a very large game tree <!--- Other examples are abstraction (grouping similar hands) or pruning (ignoring unlikely scenarios) -->
+  - Fails to take advantage of imperfect opponent
 ---
 **Using ML and LLMs**
 - State of the art poker bot: **Pluribus**
   - Uses self-play to iteratively converge close to the Nash Equilibrium
   - Leverages Monte Carlo Counterfactual Regret Minimization
-- Transformer models like ChatGPT / GPT-4 also don't play GTO
-- LLMs use less compute/resource consumption than CFR
-- Can receive more information in the game tree
+- Transformer models like ChatGPT / GPT-4 also do not play GTO
+- LLMs use less compute/resource consumption than CFR <!--- have to evaluate every possible action from every state in order to calculate and update regret -->
+- Can receive more information in the game tree <!-- doesn't need to make simplifications above -->
 
 ---
 
@@ -121,7 +121,7 @@ paginate: true
 
 - **In our implementation**
     - $r$ is a hyperparameter
-    - We choose $r = 32$, about $\frac{59,867,136}{3,000,000,000}$ (~2%) of parameters are trainable
+    - We choose $r = 32$, about $\frac{59,867,136}{3,000,000,000}$ (~2%) of parameters are trainable <!--- This helps us later when we save different models from self-play, since we only need to save LoRA weights for each model rather than the whole thing -->
 
 ---
 
@@ -129,34 +129,29 @@ paginate: true
 ## **Optimization & Reward Functions**
 
 - **Reward Function Design For Initial Training:**
-    - **Negative Reward:** Apply penalties for outputs that violate constraints.
-    - **Zero Reward:** No reward for clearly incorrect moves.
+  - **Zero Reward:** No reward for clearly incorrect moves.
   - **Partial Rewards:**
     - Reward for executing a correct action.
-    - Additional reward for an almost correct action (e.g., bet size within ±20% of the optimal).
+    - Additional reward for an almost correct action (e.g., bet size within ±20% of the optimal). <!--- prevents sparse rewards to ensure our model is consistently learning -->
   - **Maximum Reward:**
     - Full reward for both the correct action and optimal bet sizing.
----
-- **Why This Approach?**
-  - Allows gradual, nuanced learning instead of an all-or-nothing reward.
-  - Helps the model learn the subtleties of decision-making in an environment where perfect play is rare.
-
 
 ---
 ## **Selecting GRPO & Refining the Model**
 
 - **Algorithm Choice: Group Relative Policy Optimization (GRPO)**
   - **Justification:**
-    - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success.
+    - Suitable for poker's continuous and complex environment where isolated wins do not ensure overall success
 
 ---
 - **Tuning Procedure & Hyperparameters:**
   - **Reward Function Tuning:**
-    - Began with rewards only for exact matches, but feedback was sparse.
-    - Introduced partial credit for near-miss outputs (e.g., valid poker moves, near-optimal bet amounts).
+    - Began with rewards only for exact matches, but feedback was sparse
+    - Introduced partial credit for near-miss outputs (e.g., valid poker moves, near-optimal bet amounts)
+    - Tweaked reward functions to prevent reward hacking
   - **Hyperparameter Exploration:**
     - Exploration for reward thresholds for formatting/answers and learning rates
-    - Iterative refinement based on model performance and stability.
+    - Iterative refinement based on model performance and observation of reward trends
 
 ---
 - **Implementation Choices:**
