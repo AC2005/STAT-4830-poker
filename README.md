@@ -15,8 +15,8 @@ your-repo/
 └── docs/                        # Final presentation and other final docs
 ```
 
-## Setup Instructions
-
-## Running the Code
+## Setup and Running Instructions
+All code is in colab in the notebooks/ folder, so download the .ipynb and upload to colab and hit 'run all'
 
 ## Executable Demo Link
+https://colab.research.google.com/drive/1C1v6aIFZ5ZeKcvry71FmlbHreh96LBKP?usp=sharing 
