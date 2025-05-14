@@ -18,7 +18,7 @@ your-repo/
 All code is in Colab in the notebooks folder (older versions can be found in archive). Simply download the .ipynb, upload to colab, hit 'run all', and input any necessary HuggingFace tokens to run the notebooks.
 
 ## Executable Demo Link
-https://colab.research.google.com/drive/1C1v6aIFZ5ZeKcvry71FmlbHreh96LBKP?usp=sharing 
+https://drive.google.com/file/d/1ZyVTYEA6CX1f3MAX-iuUm2EXUIBYWMnW/view?usp=sharing
 
 ## Final Training Notebook Link
-https://colab.research.google.com/drive/1C3qE3WLjD7Cs94wCqegALLWkwMqDk9OU?usp=sharing
+https://drive.google.com/file/d/1_8TswCiSq0o8s9jXl8x3-TsRfTFu8Upo/view?usp=sharing
