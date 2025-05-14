@@ -11,12 +11,14 @@ your-repo/
 ├── report.md                    # Final project report
 ├── archive/                     # Contains all intermediate work
 ├── notebooks/                   # Jupyter notebooks
-├── src/                         # Source code
 └── docs/                        # Final presentation and other final docs
 ```
 
 ## Setup and Running Instructions
-All code is in colab in the notebooks folder (older versions can be found in archive), so download the .ipynb and upload to colab and hit 'run all'
+All code is in Colab in the notebooks folder (older versions can be found in archive). Simply download the .ipynb, upload to colab, hit 'run all', and input any necessary HuggingFace tokens to run the notebooks.
 
 ## Executable Demo Link
 https://colab.research.google.com/drive/1C1v6aIFZ5ZeKcvry71FmlbHreh96LBKP?usp=sharing 
+
+## Final Training Notebook Link
+https://colab.research.google.com/drive/1C3qE3WLjD7Cs94wCqegALLWkwMqDk9OU?usp=sharing
